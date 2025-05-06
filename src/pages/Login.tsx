@@ -218,10 +218,6 @@ const Login = () => {
               'Login'
             )}
           </Button>
-          
-          <div className="text-center text-sm text-muted-foreground mt-4">
-            <p>Demo: Use any email from <a href="https://jsonplaceholder.typicode.com/users" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">JSONPlaceholder</a> with password "password123"</p>
-          </div>
         </form>
       </div>
       
