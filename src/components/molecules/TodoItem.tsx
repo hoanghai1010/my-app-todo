@@ -3,6 +3,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { Edit, Trash2 } from 'lucide-react';
 import { TodoPriorityBadge } from '@/components/atoms/TodoPriorityBadge';
+import { TodoStatusBadge } from '@/components/atoms/TodoStatusBadge';
 import { cn } from '@/lib/utils';
 import { Todo } from '@/types/todo';
 import { ConfirmationDialog } from '@/components/molecules/ConfirmationDialog';
@@ -47,7 +48,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
 
   return (
     <div className="flex items-center justify-between p-2 border-b">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         <Checkbox 
           checked={todo.status === 'completed'} 
           onCheckedChange={handleToggle}
@@ -62,7 +63,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         >
           {todo.title}
         </label>
-        <TodoPriorityBadge priority={todo.priority} />
+        <div className="flex gap-1 flex-wrap">
+          <TodoPriorityBadge priority={todo.priority} />
+          <TodoStatusBadge status={todo.status} />
+        </div>
       </div>
       
       <div className="flex gap-1">

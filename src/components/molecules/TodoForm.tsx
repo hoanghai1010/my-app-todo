@@ -32,7 +32,7 @@ export const TodoForm: React.FC<TodoFormProps> = ({
 
   return (
     <form onSubmit={onSubmit} className="mb-6">
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2">
         <Input
           name="title"
           placeholder="Add a new task"
@@ -43,23 +43,39 @@ export const TodoForm: React.FC<TodoFormProps> = ({
           autoFocus
         />
 
-        <Select
-          value={newTodo.priority}
-          onValueChange={handlePriorityChange}
-        >
-          <SelectTrigger className="w-[100px]">
-            <SelectValue placeholder="Priority" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="low">Low</SelectItem>
-            <SelectItem value="medium">Medium</SelectItem>
-            <SelectItem value="high">High</SelectItem>
-          </SelectContent>
-        </Select>
+      <div className="flex gap-2">
+          <Select
+            value={newTodo.priority}
+            onValueChange={handlePriorityChange}
+          >
+            <SelectTrigger className="w-[100px]">
+              <SelectValue placeholder="Priority" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="low">Low</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+              <SelectItem value="high">High</SelectItem>
+            </SelectContent>
+          </Select>
 
-        <Button type="submit">
-          {isEditing ? 'Update' : <Plus size={16} />}
-        </Button>
+          <Select
+            value={newTodo.status}
+            onValueChange={handleStatusChange}
+          >
+            <SelectTrigger className="w-[130px]">
+              <SelectValue placeholder="Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="todo">Todo</SelectItem>
+              <SelectItem value="in-progress">In Progress</SelectItem>
+              <SelectItem value="completed">Completed</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Button type="submit">
+            {isEditing ? 'Update' : <Plus size={16} />}
+          </Button>
+        </div>
       </div>
     </form>
   );
